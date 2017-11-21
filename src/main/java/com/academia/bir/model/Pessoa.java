@@ -3,17 +3,22 @@ package com.academia.bir.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.Table;
 
 @Entity
+@Inheritance
+@DiscriminatorColumn(name = "pessoa_tipo")
 public abstract class Pessoa implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long matricula;
 	
-	private String name;
+	private String nome;
 	private String endereco;
 	private int cpf;
 	private Date data_nascimento;
@@ -25,11 +30,11 @@ public abstract class Pessoa implements Serializable{
 		return matricula;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public String getEndereco() {
 		return endereco;

@@ -1,0 +1,1 @@
+insert into Pessoa (matricula, nome, pessoa_tipo, cpf) values (1, 'Pedro', 1, 123);

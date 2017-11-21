@@ -10,37 +10,51 @@
 	
 	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>	
     <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    
 </head>
 <body>
 	<div class="panel panel-default" style="margin: 10px">
 		<div class="panel-heading">
-   			<h1 class="panel-title">Lista de alunos</h1>
+   			<h1 class="panel-title">Cadastrar Aluno</h1>
 	   	</div>
 	   	
 	   	<div class="panel-body">
-			<!-- <form class="form-inline" method="POST" th:action="@{/alunos}"
+			<form class="form-inline" method="POST" th:action="@{/alunos}"
 				th:object="${aluno}" style="margin: 20px 0">
 				<div class="form-group">
-					<input type="text" class="form-control" id="nome"
-						th:field="*{nome}" placeholder="Nome" /> <input type="text"
-						class="form-control" id="quantidadeAcompanhantes"
-						th:field="*{quantidadeAcompanhantes}" placeholder="Acompanhantes" />
-
+					<input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Nome" /> 
+					<input type="text" class="form-control" id="cpf" th:field="*{cpf}" placeholder="cpf" />
+					<input type="text" class="form-control" id="endereco" th:field="*{endereco}" placeholder="Endereço" />
+					<input type="text" class="form-control" id="data_nascimento" th:field="*{data_nascimento}" placeholder="Data de Nascimento" />
+					<input type="text" class="form-control" id="email" th:field="*{email}" placeholder="Email" />
+					<input type="text" class="form-control" id="telefone" th:field="*{telefone}" placeholder="telefone" />
 					<button type="submit" class="btn btn-primary">Adicionar</button>
 				</div>
-			</form> -->
+			</form>
 
+			<div class="panel-heading">
+   				<h1 class="panel-title">Lista de Alunos</h1>
+	   		</div>
 			<table class="table">
 				<thead>
 					<tr>
 						<th>Nome</th>
+						<th>CPF</th>
+						<th>Endereço</th>
+						<th>Data Nascimento</th>
+						<th>Email</th>
+						<th>Telefone</th>
 					</tr>
 				</thead>
 				
 				<tbody>
 					<tr th:each="aluno : ${alunos}">
 						<td th:text="${aluno.nome}"></td>
-						<!-- <td th:text="${aluno.quantidadeAcompanhantes}"></td> -->
+						<td th:text="${aluno.cpf}"></td>
+						<td th:text="${aluno.endereco}"></td>
+						<td th:text="${aluno.data_nascimento}"></td>
+						<td th:text="${aluno.email}"></td>
+						<td th:text="${aluno.telefone}"></td>
 					</tr>
 				</tbody>
 			</table>

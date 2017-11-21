@@ -1,10 +1,12 @@
 package com.academia.bir.model;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import com.academia.bir.enums.Objetivo;
 
 @Entity
+@DiscriminatorValue("1")
 public class Aluno extends Pessoa{
 	private Objetivo objetivo;
 
