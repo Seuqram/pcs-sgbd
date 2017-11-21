@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width" />
+	
+	<title>Lista de alunos</title>
+	
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>	
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+   			<h1 class="panel-title">Cadastrar Resultado</h1>
+   			<form class="form-inline" method="POST" th:action="@{/alunos}"
+				th:object="${aluno}" style="margin: 20px 0">
+				<div class="form-group">
+					<input type="text" class="form-control" id="medidas.braco_esquerdo" th:field="*{medidas.braco_esquerdo}" placeholder="Nome" />
+				</div>
+			</form>
+	   	</div>
+	   	
+	   	<div class="panel-body">
+
+			<div class="panel-heading">
+   				<h1 class="panel-title">Lista de Resultados</h1>
+	   		</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>Endereço</th>
+						<th>Data Nascimento</th>
+						<th>Email</th>
+						<th>Telefone</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr th:each="resultado : ${resultados}">
+					 	<td th:text="${resultado.data_de_cadastro}"></td>
+						<td th:text="${resultado.medida.braco_esquerdo}"></td>
+					<!--	<td th:text="${aluno.endereco}"></td>
+						<td th:text="${aluno.data_nascimento}"></td>
+						<td th:text="${aluno.email}"></td>
+						<td th:text="${aluno.telefone}"></td>
+					</tr>-->
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
