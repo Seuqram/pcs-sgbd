@@ -17,10 +17,7 @@ public class Resultado implements Serializable{
 	
 	private Date data_de_cadastro;
 	private Medida medidas;
-
-	public void Resultado() {
-		this.medidas = new Medida();
-	}
+	private Aluno aluno;
 	
 	@PrePersist
 	void onCreate() {
@@ -38,5 +35,8 @@ public class Resultado implements Serializable{
 	}
 	public void setMedidas(Medida medidas) {
 		this.medidas = medidas;
+	}
+	public Aluno getAluno() {
+		return aluno;
 	}
 }
