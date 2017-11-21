@@ -1,5 +1,6 @@
 package com.academia.bir.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long matricula;
@@ -23,9 +24,7 @@ public abstract class Pessoa {
 	public Long getMatricula() {
 		return matricula;
 	}
-	public void setMatricula(Long matricula) {
-		this.matricula = matricula;
-	}
+
 	public String getName() {
 		return name;
 	}
