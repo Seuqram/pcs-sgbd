@@ -1,26 +1,35 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org">
-    
-<head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width" />
-	
-	<title>Lista de Resultados </title>
-	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>	
-    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
-    
+<!DOCTYPE html>	
+	<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/header :: header">
+  
 </head>
-<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="https://peakfitness14.files.wordpress.com/2014/10/chicken-legs.jpg" width="60" height="60" class="d-inline-block align-top" alt=""> BIR</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="/alunos">Alunos</a>
+      <a class="nav-item nav-link" href="/resultados">Resultados</a>
+      <a class="nav-item nav-link disabled" >Exercicios</a>
+    </div>
+  </div>
+</nav>
+<body class="px-4">
 	<div class="panel panel-default" style="margin: 10px">
-		<div class="panel-heading">
-   			<h1 class="panel-title">Cadastrar Resultado <tr th:object="${aluno}"><td th:text="${aluno.nome}"></td></h1>
-   			<form class="form-inline" method="POST" th:action="@{/resultados}"
+	<div class="card card my-1 px-1">
+			<div class="card-header">
+				<h1 class="card-title">Cadastrar Resultado <tr th:object="${aluno}"><td th:text="${aluno.nome}"></td></h1>
+			</div>
+   			<form class="form-group" method="POST" th:action="@{/resultados}"
 				th:object="${resultado}" style="margin: 20px 0">
 				<div class="form-group">
-					<label for="medidas.braco_esquerdo">BraÃ§o Esquerdo:</label>
+					<label for="medidas.braco_esquerdo">Braço Esquerdo:</label>
 					<input type="text" class="form-control" id="medidas.braco_esquerdo" th:field="*{medidas.braco_esquerdo}" placeholder="Nome" />
-					<label for="medidas.braco_esquerdo">BraÃ§o Direito:</label>
+					<label for="medidas.braco_esquerdo">Braço Direito:</label>
 					<input type="text" class="form-control" id="medidas.braco_direito" th:field="*{medidas.braco_direito}" placeholder="Nome" />
 					<label for="medidas.braco_esquerdo">Coxa Esquerda:</label>
 					<input type="text" class="form-control" id="medidas.coxa_esquerda" th:field="*{medidas.coxa_esquerda}" placeholder="Nome" />
@@ -30,22 +39,22 @@
 					<input type="text" class="form-control" id="medidas.peito" th:field="*{medidas.peito}" placeholder="Nome" />
 					<label for="medidas.percentual_gordura">Percentual de Gordura:</label>
 					<input type="text" class="form-control" id="medidas.percentual_gordura" th:field="*{medidas.percentual_gordura}" placeholder="Nome" />
-					<button type="submit" class="btn btn-primary">Adicionar</button>
+					<button type="submit" class="btn btn-primary">Adicionar Resultado</button>
 				</div>
 			</form>
 	   	</div>
 	   	
 	   	<div class="panel-body">
-
-			<div class="panel-heading">
-   				<h1 class="panel-title">Lista de Resultados <tr th:object="${aluno}"><td th:text="${aluno.nome}"></td></h1>
-	   		</div>
+	   	<div class="card card my-1 px-1">
+			<div class="card-header">
+				<h1 class="card-title">Lista Resultados <tr th:object="${aluno}"><td th:text="${aluno.nome}"></td></h1>
+			</div>
 			<table class="table">
 				<thead>
 					<tr>
 						<th>Data de Cadastro</th>
-						<th>BraÃ§o Esquerdo</th>
-						<th>BraÃ§o Direito</th>
+						<th>Braço Esquerdo</th>
+						<th>Braço Direito</th>
 						<th>Coxa Esquerda</th>
 						<th>Coxa Direita</th>
 						<th>Peito</th>
