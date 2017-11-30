@@ -12,18 +12,20 @@
 			<form class="form-inline" method="POST" th:action="@{/alunos}"
 				th:object="${aluno}" style="margin: 20px 0">
 				<div class="form-group">
-					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nome"
-						th:field="*{nome}" placeholder="Nome" />
-						
-						<input class="form-control mb-2 mr-sm-2 mb-sm-0" type="number" id="cpf" th:field="*{cpf}" placeholder="cpf">
-					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="endereco"
-						th:field="*{endereco}" placeholder="Endereço" /> <input
-						type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="data_nascimento"
-						th:field="*{data_nascimento}" placeholder="Data de Nascimento" />
-					<input type="email" class="form-control mb-2 mr-sm-2 mb-sm-0" id="email"
-						th:field="*{email}" placeholder="Email" /> <input type="text"
-						class="form-control mb-2 mr-sm-2 mb-sm-0" id="telefone" th:field="*{telefone}"
-						placeholder="telefone" />
+					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nome" th:field="*{nome}" placeholder="Nome" />
+					
+					<input class="form-control mb-2 mr-sm-2 mb-sm-0" type="number" id="cpf" th:field="*{cpf}" placeholder="cpf">
+					
+					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="endereco" th:field="*{endereco}" placeholder="Endereço" /> 
+					
+					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="data_nascimento" th:field="*{data_nascimento}" placeholder="Data de Nascimento" />
+					
+					<input type="email" class="form-control mb-2 mr-sm-2 mb-sm-0" id="email" th:field="*{email}" placeholder="Email" />
+					
+					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="telefone" th:field="*{telefone}" placeholder="telefone" />
+					
+					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="objetivo" th:field="*{Objetivo}" placeholder="Objetivo" />
+					
 					<button type="submit" class="btn btn-primary">Adicionar</button>
 				</div>
 			</form>
@@ -37,6 +39,7 @@
 				<thead>
 					<tr>
 						<th>Nome</th>
+						<th>Objetivo</th>
 						<th>CPF</th>
 						<th>Endereço</th>
 						<th>Data Nascimento</th>
@@ -48,6 +51,7 @@
 				<tbody>
 					<tr th:each="aluno : ${alunos}">
 						<td th:text="${aluno.nome}"></td>
+						<td th:text="${aluno.objetivo}"></td>
 						<td th:text="${aluno.cpf}"></td>
 						<td th:text="${aluno.endereco}"></td>
 						<td th:text="${aluno.data_nascimento}"></td>

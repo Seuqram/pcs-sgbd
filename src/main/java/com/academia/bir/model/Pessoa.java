@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Inheritance
 @DiscriminatorColumn(name = "pessoa_tipo")
@@ -25,6 +27,12 @@ public abstract class Pessoa implements Serializable{
 	private String email;
 	private String telefone;
 	private String password;
+	
+	
+	@PrePersist
+	public void prePersist() {
+		this.password = "academia-bir";
+	}
 	
 	public Long getMatricula() {
 		return matricula;

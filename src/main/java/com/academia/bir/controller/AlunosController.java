@@ -1,5 +1,8 @@
 package com.academia.bir.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,12 @@ public class AlunosController {
 		ModelAndView modelAndView = new ModelAndView("ListaAlunos");
 		
 		modelAndView.addObject("alunos", alunos.findAll());
+		Map< String, String > objetivoMap = new HashMap<String, String>();
+        objetivoMap.put("hip", "Hipertrofia");
+        objetivoMap.put("con", "Condicionamento Fisico");
+        objetivoMap.put("emg", "Emagrecimento");
+         
+        modelAndView.addObject("objetivosMap", objetivoMap);
 		modelAndView.addObject("aluno", new Aluno());
 		
 		return modelAndView;
