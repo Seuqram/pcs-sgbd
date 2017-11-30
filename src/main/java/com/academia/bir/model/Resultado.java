@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Resultado {
 
 	@Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	@Column(name = "data_cadastro")
@@ -22,10 +22,22 @@ public class Resultado {
 	@Column(name = "aluno")
 	private Aluno aluno;
 	
+	@Column(name = "perfil_cadastrante")
+	private String perfil_cadastrante;
+
 	@PrePersist
 	private void patati() {
 		this.data_de_cadastro = Calendar.getInstance().getTime();
 		this.medida.setResultado(this);
+		this.perfil_cadastrante = "1";
+	}
+
+	public String getPerfil_cadastrante() {
+		return perfil_cadastrante;
+	}
+
+	public void setPerfil_cadastrante(String perfil_cadastrante) {
+		this.perfil_cadastrante = perfil_cadastrante;
 	}
 
 	public Resultado() {
