@@ -1,28 +1,51 @@
 package com.academia.bir.model;
 
-import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
+import javax.persistence.*;
 
 @Entity
-public class Resultado implements Serializable{
+@Table(name = "resultados")
+public class Resultado {
 
 	@Id
-	@GeneratedValue
+	 @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
+	@Column(name = "data_cadastro")
 	private Date data_de_cadastro;
-	private Medida medidas;
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "resultado")
+	private Medida medida;
+
+	@Column(name = "aluno")
 	private Aluno aluno;
 	
 	@PrePersist
-	void onCreate() {
-		this.setData_de_cadastro(new Date());
+	private void patati() {
+		this.data_de_cadastro = Calendar.getInstance().getTime();
+		this.medida.setResultado(this);
 	}
+
+	public Resultado() {
+	}
+
+	public Resultado(long id, Date data_de_cadastro, Aluno aluno) {
+		super();
+		this.id = id;
+		this.data_de_cadastro = data_de_cadastro;
+		this.aluno = aluno;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public Date getData_de_cadastro() {
 		return data_de_cadastro;
 	}
@@ -30,13 +53,21 @@ public class Resultado implements Serializable{
 	public void setData_de_cadastro(Date data_de_cadastro) {
 		this.data_de_cadastro = data_de_cadastro;
 	}
-	public Medida getMedidas() {
-		return medidas;
+
+	public Medida getMedida() {
+		return medida;
 	}
-	public void setMedidas(Medida medidas) {
-		this.medidas = medidas;
+
+	public void setMedida(Medida medida) {
+		this.medida = medida;
 	}
+
 	public Aluno getAluno() {
 		return aluno;
 	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
 }

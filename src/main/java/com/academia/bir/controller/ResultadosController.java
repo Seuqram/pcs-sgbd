@@ -1,5 +1,7 @@
 package com.academia.bir.controller;
 
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.academia.bir.model.Medida;
+import com.academia.bir.model.Pessoa;
 import com.academia.bir.model.Resultado;
 import com.academia.bir.repository.Alunos;
 import com.academia.bir.repository.Resultados;
@@ -27,8 +31,11 @@ public class ResultadosController {
 		ModelAndView modelAndView = new ModelAndView("ListaResultados");
 		
 		modelAndView.addObject("resultados", resultados.findAll());
-		modelAndView.addObject("resultado", new Resultado());
-		modelAndView.addObject("aluno", alunos.findAll().get(0));
+		Resultado resultado = new Resultado();
+		modelAndView.addObject("resultado", resultado);
+		List<Pessoa> alunoss = alunos.findAll();
+		if (alunoss.size() > 0)
+			modelAndView.addObject("aluno", alunos.findAll().get(0));
 		
 		return modelAndView;
 	}
