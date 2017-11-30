@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "resultados")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -33,7 +32,7 @@ public class Resultado {
 	private String perfil_cadastrante;
 
 	@PrePersist
-	private void patati() {
+	private void prePersist() {
 		this.data_de_cadastro = Calendar.getInstance().getTime();
 		this.medida.setResultado(this);
 		this.perfil_cadastrante = "1";

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Serie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,17 +25,19 @@ public class Serie {
 
 	@Column(name = "repeticao")
 	private String repeticao;
+	
+	@Transient
+	private Exercicio[] exercicios_aux = new Exercicio[3];
 
-	@ElementCollection
-    @CollectionTable(name = "exercicios", joinColumns = @JoinColumn(name = "serie_id"))
-    @Column(name = "exercicios")
+	@ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "serie_exercicios", joinColumns = @JoinColumn(name = "serie_id"))
 	private Set<Exercicio> exercicios = new HashSet<>();
-
-	public Serie(long id, String tipo, String repeticao) {
-		super();
-		this.id = id;
-		this.tipo = tipo;
-		this.repeticao = repeticao;
+	
+	@PrePersist
+	public void prePersist() {
+		for (Exercicio exercicio : exercicios_aux) {
+			this.exercicios.add(exercicio);
+		}
 	}
 	
 	
