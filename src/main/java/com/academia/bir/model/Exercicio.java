@@ -2,7 +2,13 @@ package com.academia.bir.model;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Exercicio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,27 +17,9 @@ public class Exercicio {
 	@Column(name = "nome")
 	private String nome;
 	
-	public Exercicio() {}
-
-	public Exercicio(long id, String nome) {
-		super();
-		this.id = id;
-		this.nome = nome;
-	}
+	@Column(name = "serie")
+	private String serie;
 	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	@Column(name = "repeticoes")
+	private String repeticoes;
 }

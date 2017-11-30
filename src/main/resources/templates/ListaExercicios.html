@@ -1,0 +1,49 @@
+<!DOCTYPE html>	
+	<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/header :: header"></head>
+
+<body class="px-4">
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="card card my-1">
+			<div class="card-header">
+				<h1 class="card-title">Cadastrar Exercicio</h1>
+			</div>
+			<form class="form-inline" method="POST" th:action="@{/exercicios}"
+				th:object="${exercicio}" style="margin: 20px 0">
+				<div class="form-group">
+					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nome" th:field="*{nome}" placeholder="Nome" />
+					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="serie" th:field="*{serie}" placeholder="Serie" />
+					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="repeticoes" th:field="*{repeticoes}" placeholder="Repeticoes" />					
+					<button type="submit" class="btn btn-primary">Adicionar</button>
+				</div>
+			</form>
+			</div>
+			<div class="card card my-1">
+			<div class="card-header">
+				<h1 class="card-title">Alunos Cadastrados</h1>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Serie</th>
+						<th>Repeticoes</th>
+					</tr>
+				</thead>
+					<tr th:each="exercicio : ${exercicios}">
+						<td th:text="${exercicio.nome}"></td>
+						<td th:text="${exercicio.serie}"></td>
+						<td th:text="${exercicio.repeticoes}"></td>
+					</tr>
+				<tbody>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

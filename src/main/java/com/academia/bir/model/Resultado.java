@@ -5,8 +5,15 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name = "resultados")
+@NoArgsConstructor
+@Getter
+@Setter
 public class Resultado {
 
 	@Id
@@ -32,54 +39,10 @@ public class Resultado {
 		this.perfil_cadastrante = "1";
 	}
 
-	public String getPerfil_cadastrante() {
-		return perfil_cadastrante;
-	}
-
-	public void setPerfil_cadastrante(String perfil_cadastrante) {
-		this.perfil_cadastrante = perfil_cadastrante;
-	}
-
-	public Resultado() {
-	}
-
 	public Resultado(long id, Date data_de_cadastro, Aluno aluno) {
 		super();
 		this.id = id;
 		this.data_de_cadastro = data_de_cadastro;
 		this.aluno = aluno;
 	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Date getData_de_cadastro() {
-		return data_de_cadastro;
-	}
-
-	public void setData_de_cadastro(Date data_de_cadastro) {
-		this.data_de_cadastro = data_de_cadastro;
-	}
-
-	public Medida getMedida() {
-		return medida;
-	}
-
-	public void setMedida(Medida medida) {
-		this.medida = medida;
-	}
-
-	public Aluno getAluno() {
-		return aluno;
-	}
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
-
 }
