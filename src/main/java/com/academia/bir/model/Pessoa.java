@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.PrePersist;
-import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
