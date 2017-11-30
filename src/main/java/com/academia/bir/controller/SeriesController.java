@@ -1,7 +1,5 @@
 package com.academia.bir.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,29 +7,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.academia.bir.model.Exercicio;
-import com.academia.bir.model.Resultado;
-import com.academia.bir.repository.Exercicios;
+import com.academia.bir.model.Serie;
+import com.academia.bir.repository.Series;
 
 @Controller
-@RequestMapping("/exercicios")
-public class ExerciciosController {
+@RequestMapping("/series")
+public class SeriesController {
 	@Autowired
-	private Exercicios exercicios;
-
+	private Series series;
+	
 	@GetMapping
 	public ModelAndView listar() { 
-		ModelAndView modelAndView = new ModelAndView("listaExercicios");
+		ModelAndView modelAndView = new ModelAndView("listaSeries");
 		
-		modelAndView.addObject("exercicios", exercicios.findAll());
-		modelAndView.addObject("exercicio", new Exercicio());
+		modelAndView.addObject("series", series.findAll());
+		modelAndView.addObject("serie", new Serie());
 		
 		return modelAndView;
 	}
 	
 	@PostMapping
-	public String salvar(Exercicio exercicio) {
-		this.exercicios.save(exercicio);
+	public String salvar(Serie serie) {
+		this.series.save(serie);
 		return "redirect:/exercicios";
 	}
 }
